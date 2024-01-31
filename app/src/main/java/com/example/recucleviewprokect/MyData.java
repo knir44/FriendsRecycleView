@@ -32,9 +32,7 @@ public class MyData {
                     "memorable fling.",
             "The British beauty who swept Ross off his feet and into a whirlwind romance. Known " +
                     "for her unforgettable wedding moment involving Ross, the phrase \"I, Ross, " +
-                    "take thee, Rachel,\" and leaving fans wondering if long-distance " +
-                    "relationships were ever a good idea. Always elegant, but beware of wedding " +
-                    "vows with her name involved."};
+                    "take thee, Rachel."};
 
     static Integer[] drawableArray = {R.drawable.chandler, R.drawable.phoebe, R.drawable.joey,
             R.drawable.ross, R.drawable.rachel, R.drawable.monica, R.drawable.janice,

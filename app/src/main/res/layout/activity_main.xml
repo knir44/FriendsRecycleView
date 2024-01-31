@@ -27,12 +27,13 @@
             android:textStyle="bold" />
 
         <Button
-            android:id="@+id/muteButton"
+            android:id="@+id/btn_mute"
             android:layout_width="match_parent"
             android:layout_height="100dp"
             android:layout_weight="1"
-            android:background="@drawable/mute"
+            android:background="@drawable/pause"
             android:onClick="muteThemeSong"
+            android:padding="100dp"
             android:text="mute" />
     </LinearLayout>
 

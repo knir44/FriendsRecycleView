@@ -2,6 +2,9 @@ package com.example.recucleviewprokect;
 
 import android.media.MediaPlayer;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -11,11 +14,16 @@ import com.example.recucleviewprokect.R.layout;
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
+
+    private Button myButton ;
+
     private RecyclerView recyclerView;
     private LinearLayoutManager layoutManager;
     private ArrayList<DataModel> dataSet;
     private CustomAdapter adapter;
-    private MediaPlayer media;
+    private MediaPlayer song = null;
+
+    private Boolean isPause = true;
 
     public MainActivity() {
     }
@@ -25,6 +33,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         this.setContentView(layout.activity_main);
         this.recyclerView = (RecyclerView)this.findViewById(id.res);
+        this.myButton = findViewById(R.id.btn_mute);
         this.layoutManager = new LinearLayoutManager(this);
         this.recyclerView.setLayoutManager(this.layoutManager);
         this.recyclerView.setItemAnimator(new DefaultItemAnimator());
@@ -39,12 +48,31 @@ public class MainActivity extends AppCompatActivity {
                             MyData.drawableArray[i]));
         }
 
-        // חייב לקבל את המערך ואת הריסייקל וויו עצמו
+
         adapter = new CustomAdapter(dataSet);
         recyclerView.setAdapter(adapter);
 
-        media = MediaPlayer.create(this, R.raw.friends_theme_song);
-        media.setLooping(true);
-        media.start();
+       song = MediaPlayer.create(this, R.raw.friends_theme_song);
+       song.setLooping(true);
+      //  song.start();
+    }
+
+
+    public void muteThemeSong(View view) {
+
+        if(song == null )return;
+
+        if(isPause)
+        {
+            myButton.setBackgroundResource(R.drawable.unpause);
+            song.setVolume(0.0f, 0.0f);
+        }
+        else
+        {
+            myButton.setBackgroundResource(R.drawable.pause);
+            song.setVolume(1.0f, 1.0f);
+        }
+
+        isPause = !isPause;
     }
 }
